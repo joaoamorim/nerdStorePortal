@@ -15,7 +15,7 @@ import javax.xml.ws.Service;
  * 
  */
 @WebServiceClient(name = "ConsultaCEP", 
-                  wsdlLocation = "http://192.168.1.100:8080/ConsultaCEP/ConsultaCEP.wsdl",
+                  wsdlLocation = "file:/C:/Users/João/git/nerdStorePortal/nerdStorePortal/src/ConsultaCEP.wsdl",
                   targetNamespace = "http://das.ufsc.br/ConsultaCEP/") 
 public class ConsultaCEP_Service extends Service {
 
@@ -26,11 +26,11 @@ public class ConsultaCEP_Service extends Service {
     static {
         URL url = null;
         try {
-            url = new URL("http://192.168.1.100:8080/ConsultaCEP/ConsultaCEP.wsdl");
+            url = new URL("file:/C:/Users/João/git/nerdStorePortal/nerdStorePortal/src/ConsultaCEP.wsdl");
         } catch (MalformedURLException e) {
             java.util.logging.Logger.getLogger(ConsultaCEP_Service.class.getName())
                 .log(java.util.logging.Level.INFO, 
-                     "Can not initialize the default wsdl from {0}", "http://192.168.1.100:8080/ConsultaCEP/ConsultaCEP.wsdl");
+                     "Can not initialize the default wsdl from {0}", "file:/C:/Users/João/git/nerdStorePortal/nerdStorePortal/src/ConsultaCEP.wsdl");
         }
         WSDL_LOCATION = url;
     }

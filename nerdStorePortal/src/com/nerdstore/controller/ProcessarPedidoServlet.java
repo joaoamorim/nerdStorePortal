@@ -2,6 +2,7 @@ package com.nerdstore.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,11 +46,27 @@ public class ProcessarPedidoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		response.setContentType("text/plain");
+		PrintWriter out = response.getWriter();
+		
+		Map<String, String[]> parameters = request.getParameterMap();
+		for(String parameter : parameters.keySet()) {
+			System.out.println("REQUEST PARAMETER - " + parameter.toUpperCase() + " : " + request.getParameter(parameter) + "<br />" );    
+		}
+		
 		String nomeCliente = request.getParameter("nome");
 		String cep = request.getParameter("cep");
 		String email = request.getParameter("email");
 		String cartao = request.getParameter("cartao");
 		String cartaoVenc = request.getParameter("cartaoVenc");
+		
+		System.out.println("cartaoVenc: " + cartaoVenc);
+		
+		//Tratanto formato do vencimento do cartao
+		String[] vencFormat = cartaoVenc.split("-");
+		cartaoVenc = vencFormat[1]+ "/"+vencFormat[0];
+		
+		System.out.println("cartaoVenc: " + cartaoVenc);
 
 		String qtdeRoboDomestico = (request.getParameter("qdtRoboDomestico")); // Robo Domestico Ark
 		String qtdeRoboMedico = (request.getParameter("qdtRoboMedico")); // Robo Domestico Solar
@@ -58,7 +75,8 @@ public class ProcessarPedidoServlet extends HttpServlet {
 		String qtdeReatorSolar = (request.getParameter("qdtReatorSolar")); // Robo Medico Ark
 		
 		// FIXME: Comentar para passar, enquanto não for possível chamar o serviço BPEL na máquina do Rafael
-		InformacaoCEP confirmacaoPedido = getConsultaCEP().consultarCEP(cep, nomeCliente, email, cartao, cartaoVenc,
+		ConsultaCEP nerdstoreBPELService = getConsultaCEP();
+		InformacaoCEP confirmacaoPedido = nerdstoreBPELService.consultarCEP(cep, nomeCliente, email, cartao, cartaoVenc,
 				qtdeReatorArk, qtdeReatorSolar, qtdeRoboMedico, qtdeRoboSeguranca, qtdeRoboDomestico);	
 		
 //		// FIXME: MOCK TO PASS
@@ -76,10 +94,6 @@ public class ProcessarPedidoServlet extends HttpServlet {
 //		confirmacaoPedido.setNewElement3("Element 3 " + System.currentTimeMillis());
 //		// FIXME: MOCK TO PASS
 		
-		response.setContentType("text/plain");
-
-		PrintWriter out = response.getWriter();
-
 		out.write("Solicitação do cliente: " + nomeCliente + "\n");
 		
 		out.write("\n\nResultado:\n\n");
@@ -93,17 +107,30 @@ public class ProcessarPedidoServlet extends HttpServlet {
 			out.write("\n\nObrigado por comprar na Nedstore.\n\n");
 			out.write("Volte sempre.\n");
 						
+			/*
+			 *  "Nome",
+    "endereco",
+    "Email",
+    "BrRoboticsCodigo",
+    "StarkSystemCodigo",
+    "TotalStark",
+    "TotalBrRobotics",
+    "TransacaoCard",
+    "Bandeira",
+    "ValorTotalCompra"
+			 */
+			
 			// Verificar com o Rafael o novo nome dos parâmetros retornados 
-			request.setAttribute("brRobotic", confirmacaoPedido.getBrRobotic());
-			request.setAttribute("brRobotic1",confirmacaoPedido.getBrRobotic1());
-			request.setAttribute("brRobotic2",confirmacaoPedido.getBrRobotic2());
-			request.setAttribute("cep",confirmacaoPedido.getCep());
+			request.setAttribute("Nome", confirmacaoPedido.getNome());
 			request.setAttribute("endereco",confirmacaoPedido.getEndereco());
-			request.setAttribute("estado",confirmacaoPedido.getEstado());
-			request.setAttribute("newElement",confirmacaoPedido.getNewElement());
-			request.setAttribute("newElement1",confirmacaoPedido.getNewElement1());
-			request.setAttribute("newElement2",confirmacaoPedido.getNewElement2());
-			request.setAttribute("newElement3",confirmacaoPedido.getNewElement3());
+			request.setAttribute("Email",confirmacaoPedido.getEmail());
+			request.setAttribute("BrRoboticsCodigo",confirmacaoPedido.getBrRoboticsCodigo());
+			request.setAttribute("StarkSystemCodigo",confirmacaoPedido.getStarkSystemCodigo());
+			request.setAttribute("TotalStark",confirmacaoPedido.getTotalStark());
+			request.setAttribute("TotalBrRobotics",confirmacaoPedido.getTotalBrRobotics());
+			request.setAttribute("TransacaoCard",confirmacaoPedido.getTransacaoCard());
+			request.setAttribute("Bandeira",confirmacaoPedido.getBandeira());
+			request.setAttribute("ValorTotalCompra",confirmacaoPedido.getValorTotalCompra());
 
 		    RequestDispatcher rd = request.getRequestDispatcher("/resultadoPedido.jsp");
 		    rd.forward(request, response);

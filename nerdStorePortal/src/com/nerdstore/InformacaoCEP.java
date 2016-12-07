@@ -17,16 +17,16 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="cep" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="endereco" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Estado" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="NewElement3" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="NewElement2" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="NewElement1" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="NewElement" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="BrRobotic" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="BrRobotic1" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="BrRobotic2" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         <xsd:element name="Nome" type="xsd:string"/>
+ *         <xsd:element name="endereco" type="xsd:string"/>
+<xsd:element name="Email" type="xsd:string"/>
+<xsd:element name="BrRoboticsCodigo" type="xsd:string"/>
+<xsd:element name="StarkSystemCodigo" type="xsd:string"/>
+<xsd:element name="TotalStark" type="xsd:string"/>
+<xsd:element name="TotalBrRobotics" type="xsd:string"/>
+<xsd:element name="TransacaoCard" type="xsd:string"/>
+<xsd:element name="Bandeira" type="xsd:string"/>
+<xsd:element name="ValorTotalCompra" type="xsd:string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,39 +37,39 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InformacaoCEP", propOrder = {
-    "cep",
+    "Nome",
     "endereco",
-    "estado",
-    "newElement3",
-    "newElement2",
-    "newElement1",
-    "newElement",
-    "brRobotic",
-    "brRobotic1",
-    "brRobotic2"
+    "Email",
+    "BrRoboticsCodigo",
+    "StarkSystemCodigo",
+    "TotalStark",
+    "TotalBrRobotics",
+    "TransacaoCard",
+    "Bandeira",
+    "ValorTotalCompra"
 })
 public class InformacaoCEP {
 
     @XmlElement(required = true)
-    protected String cep;
+    protected String Nome;
     @XmlElement(required = true)
     protected String endereco;
-    @XmlElement(name = "Estado", required = true)
-    protected String estado;
-    @XmlElement(name = "NewElement3", required = true)
-    protected String newElement3;
-    @XmlElement(name = "NewElement2", required = true)
-    protected String newElement2;
-    @XmlElement(name = "NewElement1", required = true)
-    protected String newElement1;
-    @XmlElement(name = "NewElement", required = true)
-    protected String newElement;
-    @XmlElement(name = "BrRobotic", required = true)
-    protected String brRobotic;
-    @XmlElement(name = "BrRobotic1", required = true)
-    protected String brRobotic1;
-    @XmlElement(name = "BrRobotic2", required = true)
-    protected String brRobotic2;
+    @XmlElement(name = "Email", required = true)
+    protected String Email;
+    @XmlElement(name = "BrRoboticsCodigo", required = true)
+    protected String BrRoboticsCodigo;
+    @XmlElement(name = "StarkSystemCodigo", required = true)
+    protected String StarkSystemCodigo;
+    @XmlElement(name = "TotalStark", required = true)
+    protected String TotalStark;
+    @XmlElement(name = "TotalBrRobotics", required = true)
+    protected String TotalBrRobotics;
+    @XmlElement(name = "TransacaoCard", required = true)
+    protected String TransacaoCard;
+    @XmlElement(name = "Bandeira", required = true)
+    protected String Bandeira;
+    @XmlElement(name = "ValorTotalCompra", required = true)
+    protected String ValorTotalCompra;
 
     /**
      * Obtém o valor da propriedade cep.
@@ -79,8 +79,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public String getCep() {
-        return cep;
+    public String getNome() {
+        return Nome;
     }
 
     /**
@@ -91,8 +91,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public void setCep(String value) {
-        this.cep = value;
+    public void setNome(String value) {
+        this.Nome = value;
     }
 
     /**
@@ -127,8 +127,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public String getEstado() {
-        return estado;
+    public String getEmail() {
+        return Email;
     }
 
     /**
@@ -139,8 +139,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public void setEstado(String value) {
-        this.estado = value;
+    public void setEmail(String value) {
+        this.Email = value;
     }
 
     /**
@@ -151,8 +151,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public String getNewElement3() {
-        return newElement3;
+    public String getBrRoboticsCodigo() {
+        return BrRoboticsCodigo;
     }
 
     /**
@@ -163,8 +163,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public void setNewElement3(String value) {
-        this.newElement3 = value;
+    public void setBrRoboticsCodigo(String value) {
+        this.BrRoboticsCodigo = value;
     }
 
     /**
@@ -175,8 +175,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public String getNewElement2() {
-        return newElement2;
+    public String getStarkSystemCodigo() {
+        return StarkSystemCodigo;
     }
 
     /**
@@ -187,8 +187,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public void setNewElement2(String value) {
-        this.newElement2 = value;
+    public void setStarkSystemCodigo(String value) {
+        this.StarkSystemCodigo = value;
     }
 
     /**
@@ -199,8 +199,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public String getNewElement1() {
-        return newElement1;
+    public String getTotalStark() {
+        return TotalStark;
     }
 
     /**
@@ -211,8 +211,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public void setNewElement1(String value) {
-        this.newElement1 = value;
+    public void setTotalStark(String value) {
+        this.TotalStark = value;
     }
 
     /**
@@ -223,8 +223,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public String getNewElement() {
-        return newElement;
+    public String getTotalBrRobotics() {
+        return TotalBrRobotics;
     }
 
     /**
@@ -235,8 +235,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public void setNewElement(String value) {
-        this.newElement = value;
+    public void setTotalBrRobotics(String value) {
+        this.TotalBrRobotics = value;
     }
 
     /**
@@ -247,8 +247,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public String getBrRobotic() {
-        return brRobotic;
+    public String getTransacaoCard() {
+        return TransacaoCard;
     }
 
     /**
@@ -259,8 +259,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public void setBrRobotic(String value) {
-        this.brRobotic = value;
+    public void setTransacaoCard(String value) {
+        this.TransacaoCard = value;
     }
 
     /**
@@ -271,8 +271,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public String getBrRobotic1() {
-        return brRobotic1;
+    public String getBandeira() {
+        return Bandeira;
     }
 
     /**
@@ -283,8 +283,8 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public void setBrRobotic1(String value) {
-        this.brRobotic1 = value;
+    public void setBandeira(String value) {
+        this.Bandeira = value;
     }
 
     /**
@@ -295,20 +295,20 @@ public class InformacaoCEP {
      *     {@link String }
      *     
      */
-    public String getBrRobotic2() {
-        return brRobotic2;
+    public String getValorTotalCompra() {
+        return ValorTotalCompra;
     }
 
     /**
-     * Define o valor da propriedade brRobotic2.
+     * Define o valor da propriedade ValorTotalCompra.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setBrRobotic2(String value) {
-        this.brRobotic2 = value;
+    public void setValorTotalCompra(String value) {
+        this.ValorTotalCompra = value;
     }
 
 }

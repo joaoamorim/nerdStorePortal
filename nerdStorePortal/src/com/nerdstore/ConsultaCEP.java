@@ -21,27 +21,27 @@ public interface ConsultaCEP {
     @WebMethod(action = "http://das.ufsc.br/ConsultaCEP/consultarCEP")
     @RequestWrapper(localName = "consultarCEP", targetNamespace = "http://das.ufsc.br/ConsultaCEP/", className = "com.nerdstore.ConsultarCEP")
     @ResponseWrapper(localName = "consultarCEPResponse", targetNamespace = "http://das.ufsc.br/ConsultaCEP/", className = "com.nerdstore.ConsultarCEPResponse")
-    @WebResult(name = "informacaoCEP", targetNamespace = "")
+    @WebResult(name = "informacaoCEP", targetNamespace = "http://das.ufsc.br/ConsultaCEP/")
     public com.nerdstore.InformacaoCEP consultarCEP(
-        @WebParam(name = "cep", targetNamespace = "")
+        @WebParam(name = "cep", targetNamespace = "http://das.ufsc.br/ConsultaCEP/")
         java.lang.String cep,
-        @WebParam(name = "Nome", targetNamespace = "")
+        @WebParam(name = "Nome", targetNamespace = "http://das.ufsc.br/ConsultaCEP/")
         java.lang.String nome,
-        @WebParam(name = "Email", targetNamespace = "")
+        @WebParam(name = "Email", targetNamespace = "http://das.ufsc.br/ConsultaCEP/")
         java.lang.String email,
-        @WebParam(name = "Cartao", targetNamespace = "")
+        @WebParam(name = "Cartao", targetNamespace = "http://das.ufsc.br/ConsultaCEP/")
         java.lang.String cartao,
-        @WebParam(name = "CartaoVenc", targetNamespace = "")
+        @WebParam(name = "CartaoVenc", targetNamespace = "http://das.ufsc.br/ConsultaCEP/")
         java.lang.String cartaoVenc,
-        @WebParam(name = "qdtReatorArk", targetNamespace = "")
+        @WebParam(name = "qdtReatorArk", targetNamespace = "http://das.ufsc.br/ConsultaCEP/")
         java.lang.String qdtReatorArk,
-        @WebParam(name = "qdtReatorSolar", targetNamespace = "")
+        @WebParam(name = "qdtReatorSolar", targetNamespace = "http://das.ufsc.br/ConsultaCEP/")
         java.lang.String qdtReatorSolar,
-        @WebParam(name = "qdtRoboMedico", targetNamespace = "")
+        @WebParam(name = "qdtRoboMedico", targetNamespace = "http://das.ufsc.br/ConsultaCEP/")
         java.lang.String qdtRoboMedico,
-        @WebParam(name = "qdtRoboSeguranca", targetNamespace = "")
+        @WebParam(name = "qdtRoboSeguranca", targetNamespace = "http://das.ufsc.br/ConsultaCEP/")
         java.lang.String qdtRoboSeguranca,
-        @WebParam(name = "qdtRoboDomestico", targetNamespace = "")
+        @WebParam(name = "qdtRoboDomestico", targetNamespace = "http://das.ufsc.br/ConsultaCEP/")
         java.lang.String qdtRoboDomestico
     );
 }
